@@ -1,0 +1,11 @@
+server:
+  port: 8182
+
+kafka:
+  topic: sree-topic-new
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: s-group

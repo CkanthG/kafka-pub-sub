@@ -1,0 +1,14 @@
+server:
+  port: 8181
+
+kafka:
+  topic: sree-topic-new
+  partitions: 2
+  replication-factor: 1
+
+spring:
+  application:
+    name: kafka-producer-example
+  kafka:
+    producer:
+      bootstrap-server: localhost:9092
