@@ -1,16 +1,5 @@
-server:
-  port: 8181
-
-kafka:
-  topic: sree-topic
-  partitions: 2
-  replication-factor: 1
-
 spring:
-  application:
-    name: kafka-producer-example
   kafka:
     producer:
-      bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer:  org.springframework.kafka.support.serializer.JsonSerializer

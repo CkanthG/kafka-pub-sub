@@ -1,13 +1,9 @@
-server:
-  port: 8182
-
 kafka:
   topic: sree-topic
 
 spring:
   kafka:
     consumer:
-      bootstrap-servers: localhost:9092
       group-id: s-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
