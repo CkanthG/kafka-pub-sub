@@ -1,6 +1,7 @@
 package com.sree;
 
 import com.sree.dto.User;
+import com.sree.service.KafkaConsumerService;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,16 +32,18 @@ class KafkaConsumerExampleApplicationTests {
 
 	@DynamicPropertySource
 	public static void initKafkaProperties(DynamicPropertyRegistry registry) {
-		registry.add("spring.kafka.consumer.bootstrap-servers", kafka::getBootstrapServers);
+		registry.add("spring.kafka.bootstrap-servers", kafka::getBootstrapServers);
 	}
 
+	@Autowired
+	KafkaConsumerService kafkaConsumerService;
 	@Autowired
 	KafkaTemplate<String, Object> kafkaTemplate;
 	@Value("${kafka.topic}")
 	private String kafkaTopic;
 
 	@Test
-	void consumeUserMessage() {
+	void testReceiveMessage() {
 		log.info("consumeUserMessage started ...");
 		User user = new User(1, "sree", "s@hotmail.com", "68687687687");
 		kafkaTemplate.send(kafkaTopic, user);
